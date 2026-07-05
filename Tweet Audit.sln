@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweet Audit", "Tweet Audit.csproj", "{1E5FB6A2-EE89-4605-818C-2BA80B78E851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetAudit.Tests", "..\TweetAudit.Tests\TweetAudit.Tests.csproj", "{598EF6A3-98A2-41C6-BE68-64A7A332800F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E5FB6A2-EE89-4605-818C-2BA80B78E851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5FB6A2-EE89-4605-818C-2BA80B78E851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5FB6A2-EE89-4605-818C-2BA80B78E851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5FB6A2-EE89-4605-818C-2BA80B78E851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598EF6A3-98A2-41C6-BE68-64A7A332800F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598EF6A3-98A2-41C6-BE68-64A7A332800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598EF6A3-98A2-41C6-BE68-64A7A332800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598EF6A3-98A2-41C6-BE68-64A7A332800F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB8DF6F7-14D3-43B8-BB6B-3FD7A2ABE989}
+	EndGlobalSection
+EndGlobal
