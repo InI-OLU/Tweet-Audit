@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tweet_Audit.DOMAIN
+namespace Tweet_Audit.INFRASTRUCTURE
 {
-    public class TweetVerdict
+    public class ArchiveTweetPathSettings
     {
+        public required string ArchivePath { get; set; }
     }
 }

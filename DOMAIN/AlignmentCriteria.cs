@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tweet_Audit.DOMAIN
 {
-    internal class AlignmentCriteria
+    public class AlignmentCriteria
     {
+        public List<string>? ForbiddenWords { get; set; }
+        public bool? ProfessionalCheck { get; set; }
+        public string? Tone { get; set; }
+        public bool? ExcludePolitics { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Tweet_Audit.DOMAIN
         public int Id { get; set; }
         public string FullText { get; set; }
         public string CreatedAt { get; set; }
+        public string Link { get; set; }
         public string RetweetCount { get; set; }
         public string FavoriteCount { get; set; }
     }
