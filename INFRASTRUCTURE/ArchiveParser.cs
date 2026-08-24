@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Google.GenAI.Types;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Tweet_Audit.DOMAIN;
+using File = System.IO.File;
 
 namespace Tweet_Audit.INFRASTRUCTURE
 {
@@ -18,17 +20,21 @@ namespace Tweet_Audit.INFRASTRUCTURE
         {
             filepath = settings.Value;
         }
-       
+
         public List<Tweet> ArchiveReadAndParse()
         {
+            if (!File.Exists(filepath.ArchivePath))
+            {
+                throw new FileNotFoundException($"File not found at {filepath.ArchivePath}");
+            }
             string rawContent = File.ReadAllText(filepath.ArchivePath);
-
             int jsonStartIndex = rawContent.IndexOf('[');
             string json = rawContent.Substring(jsonStartIndex);
 
-            List<Tweet> tweets = JsonSerializer.Deserialize<List<Tweet>>(json)
-                ?? new List<Tweet>();
+            List<TweetEnvelope> envelopes = JsonSerializer.Deserialize<List<TweetEnvelope>>(json)
+                ?? new List<TweetEnvelope>();
 
+            List<Tweet> tweets = envelopes.Select(e => e.Tweet).ToList();
             return tweets;
         }
     }

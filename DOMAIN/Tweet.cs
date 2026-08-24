@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Tweet_Audit.DOMAIN
 {
     public class Tweet
     {
-        public int Id { get; set; }
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        [JsonPropertyName("full_text")]
         public string FullText { get; set; }
+
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
-        public string Link { get; set; }
-        public string RetweetCount { get; set; }
-        public string FavoriteCount { get; set; }
+
     }
 }

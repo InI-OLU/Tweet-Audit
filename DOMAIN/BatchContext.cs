@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tweet_Audit.DOMAIN
 {
-    public class TweetVerdict
+    public sealed class BatchContext
     {
-        public required string Id  { get; set; }
-        public bool Flagged { get; set; }
-        public string? Reason { get; set; }
+        public int BatchId { get; init; }
+
+        public Tweet[] Tweets { get; init; } = [];
     }
 }

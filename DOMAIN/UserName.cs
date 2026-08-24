@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tweet_Audit.DOMAIN
 {
-    public class TweetVerdict
+    public class UserName
     {
-        public required string Id  { get; set; }
-        public bool Flagged { get; set; }
-        public string? Reason { get; set; }
+        public required string Name { get; set; }
     }
 }
