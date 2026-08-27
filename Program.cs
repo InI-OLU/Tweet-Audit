@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Text.Json;
 using Tweet_Audit.APPLICATION;
 using Tweet_Audit.APPLICATION.DTO;
+using Tweet_Audit.APPLICATION.INTERFACE;
 using Tweet_Audit.DOMAIN;
 using Tweet_Audit.DOMAIN.Exceptions;
 using Tweet_Audit.INFRASTRUCTURE;
@@ -21,7 +22,7 @@ try
 
     builder.Services.AddSingleton<ArchiveParser>();
     builder.Services.AddSingleton<PromptBuilder>();
-    builder.Services.AddSingleton<GeminiClient>();
+    builder.Services.AddSingleton<IGeminiClient,GeminiClient>();
     builder.Services.AddSingleton<TweetAuditService>();
     builder.Services.AddSingleton<BatchAuditService>();
     builder.Services.AddSingleton<TweetUrlBuilder>();

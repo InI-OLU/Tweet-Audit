@@ -1,10 +1,11 @@
 ﻿using Google.GenAI;
 using Microsoft.Extensions.Options;
 using Tweet_Audit.APPLICATION.DTO;
+using Tweet_Audit.APPLICATION.INTERFACE;
 
 namespace Tweet_Audit.APPLICATION
 {
-    public class GeminiClient
+    public class GeminiClient:IGeminiClient
     {
         private const string ModelName = "gemini-3.1-flash-lite";
 

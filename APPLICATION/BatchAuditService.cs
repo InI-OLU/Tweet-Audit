@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading;
+using Tweet_Audit.APPLICATION.INTERFACE;
 using Tweet_Audit.DOMAIN;
 using Tweet_Audit.DOMAIN.Exceptions;
 
@@ -11,11 +12,11 @@ public class BatchAuditService
 {   
     private const int MaxRetries = 3;
 
-    private readonly GeminiClient _geminiClient;
+    private readonly IGeminiClient _geminiClient;
     private readonly PromptBuilder _promptBuilder;
 
     public BatchAuditService(
-        GeminiClient geminiClient,
+        IGeminiClient geminiClient,
         PromptBuilder promptBuilder)
     {
         _geminiClient = geminiClient;
