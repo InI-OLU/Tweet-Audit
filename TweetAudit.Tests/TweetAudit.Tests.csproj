@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tweet Audit\Tweet Audit.csproj" />
+	  <ProjectReference Include="..\Tweet Audit.csproj" />
   </ItemGroup>
 
   <ItemGroup>

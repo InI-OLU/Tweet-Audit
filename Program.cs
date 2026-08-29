@@ -16,7 +16,13 @@ using Tweet_Audit.INFRASTRUCTURE;
 try
 {
     var builder = Host.CreateApplicationBuilder(args);
-    builder.Services.Configure<ArchiveTweetPathSettings>(builder.Configuration.GetSection("ArchiveSettings"));
+    string userProfilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    string archivePath = Path.Combine(userProfilePath, "Downloads", "ArchiveInput", "data", "tweets.js");
+
+    builder.Services.AddSingleton(Options.Create(new ArchiveTweetPathSettings
+    {
+        ArchivePath = archivePath
+    }));
     builder.Services.Configure<AlignmentCriteria>(builder.Configuration.GetSection("criteria"));
     builder.Services.Configure<GeminiApiKey>(builder.Configuration.GetSection("GeminiApiKey"));
     builder.Services.Configure<UserName>(builder.Configuration.GetSection("UserName"));
@@ -71,7 +77,7 @@ catch (Exception ex)
     Console.ForegroundColor = ConsoleColor.Red;
     string message = ex switch
     {
-        FileNotFoundException => "Couldn't find your archive file...",
+        FileNotFoundException => "Couldn't find your archive file...Couldn't find your archive file , make sure it's unzipped and renamed to ArchiveInput inside your Downloads folder\"",
         JsonException => "Your config.json has invalid JSON...",
         FatalAuditException => $"Gemini API rejected the request with a non-retryable client error {ex.Message}.",
         OptionsValidationException => $"Config problem: {ex.Message}",
