@@ -29,7 +29,7 @@ The application parses a downloaded `tweets.js` archive, processes tweets in bat
 - Generate X/Twitter URLs for flagged tweets
 - Export flagged tweets to CSV
 - Dependency Injection
-- Options pattern configuration (archive path, alignment criteria, Gemini API key, X username)
+- Options pattern configuration (alignment criteria, Gemini API key, X username)
 - Layered architecture (Domain / Application / Infrastructure)
 - Strongly typed C# models throughout
 
@@ -104,7 +104,7 @@ Deserialize + Validate
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - A Google Gemini API key
-- Your downloaded X/Twitter data archive (specifically the `tweets.js` file inside it)
+- Your downloaded X/Twitter data archive
 
 ### Clone the repository
 
@@ -112,6 +112,24 @@ Deserialize + Validate
 git clone https://github.com/InI-OLU/Tweet-Audit.git
 cd Tweet-Audit
 ```
+
+### Set up your archive
+
+Tweet Audit expects your X/Twitter archive to live at a fixed location, so there's no path to configure:
+
+```text
+%USERPROFILE%\Downloads\ArchiveInput\data\tweets.js
+```
+
+(On Windows, that's typically `C:\Users\<you>\Downloads\ArchiveInput\data\tweets.js`.)
+
+To set this up:
+
+1. Download and unzip your X/Twitter data archive.
+2. Rename the unzipped folder to `ArchiveInput`.
+3. Move it into your **Downloads** folder, so `tweets.js` ends up at `Downloads\ArchiveInput\data\tweets.js`.
+
+If the archive isn't found at that location, the app will tell you so directly when it runs.
 
 ### Configure
 
@@ -123,7 +141,6 @@ cp appsettings.example.json appsettings.json
 
 Then edit `appsettings.json` with:
 
-- `ArchiveSettings.ArchivePath` — path to your `tweets.js` file
 - `criteria` — your alignment criteria for Gemini to judge tweets against
 - `GeminiApiKey.ApiKey` — your Gemini API key
 - `UserName.Name` — your X/Twitter username (used to build tweet URLs)
@@ -144,10 +161,11 @@ Settings are supplied via `appsettings.json` and bound with the Options pattern:
 
 | Section          | Purpose                                      |
 |------------------|-----------------------------------------------|
-| `ArchiveSettings`| Path to the `tweets.js` file to parse         |
 | `criteria`       | Alignment criteria used to judge tweets       |
 | `GeminiApiKey`   | API key for Gemini requests                   |
 | `UserName`       | X/Twitter username, used to build tweet URLs  |
+
+The archive path is **not** configured via `appsettings.json`. It's resolved automatically at startup from `Downloads\ArchiveInput\data\tweets.js` — see [Set up your archive](#set-up-your-archive) above.
 
 ---
 
